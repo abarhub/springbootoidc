@@ -1,0 +1,55 @@
+# database init, supports mysql too
+database: h2
+spring.datasource.schema: classpath*:db/${database}/schema.sql
+spring.datasource.data: classpath*:db/${database}/data.sql
+
+# Web
+spring.thymeleaf.mode: HTML
+
+# JPA
+spring.jpa.hibernate.ddl-auto: none
+spring.jpa.open-in-view: false
+
+# Internationalization
+spring.messages.basename: messages/messages
+
+# Actuator
+management.endpoints.web.exposure.include: '*'
+
+# Logging
+logging.level.org.springframework: INFO
+# logging.level.org.springframework.web=DEBUG
+# logging.level.org.springframework.context.annotation=TRACE
+
+# Maximum time static resources should be cached
+spring.resources.cache.cachecontrol.max-age: 12h
+
+server.port: 8081
+
+# url de keycloak
+baseUrl: http://localhost:8080/auth
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          client1:
+            client-id: client1
+            client-secret: example-secret
+            authorization-grant-type: authorization_code
+            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
+            client-authentication-method: basic
+            client-name: Keycloak
+            scope:
+              - openid
+              - profile
+              - email
+              - address
+              - phone
+        provider:
+          client1:
+            authorization-uri: '${baseUrl}/realms/test1/protocol/openid-connect/auth'
+            token-uri: '${baseUrl}/realms/test1/protocol/openid-connect/token'
+            jwk-set-uri: '${baseUrl}/realms/test1/protocol/openid-connect/certs'
+
