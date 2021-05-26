@@ -36,11 +36,11 @@ spring:
         registration:
           client1:
             client-id: client1
-            client-secret: example-secret
+            #client-secret: example-secret
             authorization-grant-type: authorization_code
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
             client-authentication-method: basic
-            client-name: Keycloak
+            client-name: Client1
             scope:
               - openid
               - profile
