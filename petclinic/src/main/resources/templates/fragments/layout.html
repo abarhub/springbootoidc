@@ -17,6 +17,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
   <link rel="stylesheet" th:href="@{/resources/css/petclinic.css}" />
 
 </head>
@@ -79,11 +80,14 @@
             <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
             <span>Status User</span>
           </li>
-          <li
-            th:replace="::menuItem ('/logout','status','logout user','th-list','Logout')">
-            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-            <span>Logout</span>
+          <li>
+            <form action="#" th:action="@{/logout}"
+                  method="post">
+              Logout
+              <input type="submit" value="Submit" />
+            </form>
           </li>
+
 
         </ul>
       </div>

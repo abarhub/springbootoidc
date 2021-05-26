@@ -16,7 +16,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/owners/**").authenticated()
 			.antMatchers("/").permitAll()
 			.and()
-			.oauth2Login();
+			.oauth2Login()
+			.and()
+			// logout ne délogue pas dans KeyCloak
+			.logout().logoutSuccessUrl("/").permitAll();
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 public class SecurityController {
 
@@ -22,9 +23,10 @@ public class SecurityController {
 		LOGGER.info("authentication={}", authentication);
 
 		model.addAttribute("status", "aaa");
-		model.addAttribute("authent", authentication!=null&&authentication.isAuthenticated());
+		model.addAttribute("authent", authentication != null && authentication.isAuthenticated());
 
 		return "statususer"; //view
 	}
+
 
 }
